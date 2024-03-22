@@ -27,12 +27,22 @@
       XPathResult.STRING_TYPE
     ).stringValue;
 
+    const volume = find(
+      parentXPath + "/div[" + (idx + 1) + "]/div/div[2]/div[3]/div[3]/span[2]",
+      XPathResult.STRING_TYPE
+    ).stringValue;
+
     const socialElement = find(
       parentXPath + "/div[" + (idx + 1) + "]/div/div[2]/div[2]/div/span",
       XPathResult.FIRST_ORDERED_NODE_TYPE
     ).singleNodeValue;
 
-    if (holders !== holdersCount || supply !== supplyCount || !socialElement) {
+    if (
+      holders !== holdersCount ||
+      supply !== supplyCount ||
+      volume !== "$0" ||
+      !socialElement
+    ) {
       parentElement.removeChild(child);
     } else {
       idx += 1;
